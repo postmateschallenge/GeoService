@@ -1,0 +1,60 @@
+---
+swagger: "2.0"
+info:
+  description: "This is a API provided by Postmates to the lat, lng coordinates for\
+    \ address"
+  version: "1.0.0"
+  title: "Postmates GeoServices"
+  contact:
+    email: "postmatestest1234@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "virtserver.swaggerhub.com"
+basePath: "/PostmatesGeoServices/PostmatesGeoServices/1.0.0"
+tags:
+- name: "Address"
+  description: "Events about mouse operations"
+schemes:
+- "https"
+paths:
+  /Address:
+    get:
+      tags:
+      - "Address"
+      summary: "get latitude and longitude of an address"
+      description: "By passing in the address, you can get latitude and longitude\
+        \ of an it\n"
+      operationId: "getLatLngWithAddr"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "addr"
+        in: "query"
+        description: "pass an address"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+        400:
+          description: "Invalid operation"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+definitions:
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      type:
+        type: "string"
+      message:
+        type: "string"
+    example:
+      code: 0
+      type: "type"
+      message: "message"
