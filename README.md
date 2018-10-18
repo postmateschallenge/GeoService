@@ -40,7 +40,7 @@ This happens when the service we are calling is still working, but the address i
 #### Failed return formats:
 
 {'Failed':  
-    "PossibleLocations": []
+    "PossibleLocations": []  
 }  
 This happens when both primary and backup services are down, but our service exposed is still good. 
 
