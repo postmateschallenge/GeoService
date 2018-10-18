@@ -14,7 +14,7 @@ host: "localhost:8080"
 basePath: "/PostmatesGeoServices/PostmatesGeoServices/1.0.0"
 tags:
 - name: "Address"
-  description: "Events about mouse operations"
+  description: "Events about Address"
 schemes:
 - "http"
 paths:
