@@ -10,13 +10,13 @@ info:
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "virtserver.swaggerhub.com"
+host: "localhost:8080"
 basePath: "/PostmatesGeoServices/PostmatesGeoServices/1.0.0"
 tags:
 - name: "Address"
   description: "Events about mouse operations"
 schemes:
-- "https"
+- "http"
 paths:
   /Address:
     get:
@@ -25,7 +25,7 @@ paths:
       summary: "get latitude and longitude of an address"
       description: "By passing in the address, you can get latitude and longitude\
         \ of an it\n"
-      operationId: "getLatLngWithAddr"
+      operationId: "get_lat_lng_with_addr"
       produces:
       - "application/json"
       parameters:
@@ -43,6 +43,7 @@ paths:
           description: "Invalid operation"
           schema:
             $ref: "#/definitions/ApiResponse"
+      x-swagger-router-controller: "swagger_server.controllers.address_controller"
 definitions:
   ApiResponse:
     type: "object"
