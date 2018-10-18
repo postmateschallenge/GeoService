@@ -13,6 +13,7 @@ GOOGLE_SERVICE = 'google'
 HERE_SERVICE= 'here'
 PRIMARY_SERVICE = SERVICE_PROVIDERS[0]
 SECONDARY_SERVICE = SERVICE_PROVIDERS[1]
+FAILED_RESPONSE = {'Failed': []}
 
 def url2Request(service=PRIMARY_SERVICE, addr=""):
     urlBase = 'localhost'
@@ -44,7 +45,7 @@ def serviceResultTranslate(service, result):
         """
         if not result or not result.get('results'):
             selectedServiceUnavaliable = True
-            returnJson = {'Failed': []}
+            returnJson = FAILED_RESPONSE
         else:
             coordinate = result.get('results')[0].get('geometry').get('location')
             returnJson = {'Success': {'PossibleLocations': [{'lat': coordinate.get('lat'), 'lng': coordinate.get('lng')}]}}
@@ -54,7 +55,7 @@ def serviceResultTranslate(service, result):
         """
         if not result or not result.get('Response'):
             selectedServiceUnavaliable = True
-            returnJson = {'Failed': []}
+            returnJson = FAILED_RESPONSE
         else:
             if (len(result.get('Response').get('View')) > 0 and 
             len(result.get('Response').get('View')[0].get('Result')) > 0):
@@ -92,5 +93,5 @@ def get_lat_lng_with_addr(addr=None):  # noqa: E501
                 result = json.load(r)
                 primaryServiceUnavaliable, returnJson = serviceResultTranslate(SECONDARY_SERVICE, result)
         except:
-            primaryServiceUnavaliable = True
+            returnJson = FAILED_RESPONSE
     return returnJson
