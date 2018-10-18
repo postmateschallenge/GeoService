@@ -20,7 +20,8 @@ Response Code:
 #### Successful return formats:
 
 
-{'Success':  
+{  
+'Success':  
     "PossibleLocations": [  
         {  
         "lat": 0.0,  
@@ -31,7 +32,8 @@ Response Code:
   
 or   
   
-{'Success':   
+{  
+'Success':   
     "PossibleLocations": []   
 }   
 
@@ -39,7 +41,8 @@ This happens when the service we are calling is still working, but the address i
 
 #### Failed return formats:
 
-{'Failed':  
+{  
+'Failed':  
     "PossibleLocations": []  
 }  
 This happens when both primary and backup services are down, but our service exposed is still good. 
